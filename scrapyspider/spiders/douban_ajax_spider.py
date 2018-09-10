@@ -23,7 +23,7 @@ class DoubanAJAXSpider(Spider):
         yield Request(url, headers=self.headers)
 
     def parse(self, response):
-        datas = json.loads(response.body)
+        datas = json.loads(response.body.decode('utf-8'))
         item = DoubanMovieItem()
         if datas:
             for data in datas:
